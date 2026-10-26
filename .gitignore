@@ -1,0 +1,15 @@
+# 发布产物与本机状态不进仓库（Release 资产单独上传）
+output/
+*.zip
+*.part
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# 编辑器
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
