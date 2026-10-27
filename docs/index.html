@@ -63,12 +63,14 @@
   @media (max-width:720px){ .nav-links{display:none} }
 
   .hero{padding:64px 0 28px; text-align:center}
+  .eyebrows{display:flex; flex-wrap:wrap; gap:8px; justify-content:center}
   .eyebrow{
     display:inline-flex; gap:8px; align-items:center;
     font-size:13px; color:var(--muted); background:var(--surface);
     border:1px solid var(--line); border-radius:999px; padding:6px 14px;
   }
   .dot{width:7px; height:7px; border-radius:50%; background:#29b36b}
+  .dot.cloud{background:var(--accent)}
   .hero h1{
     margin:20px auto 14px; max-width:860px;
     font-size:clamp(32px,5.4vw,56px); line-height:1.15; letter-spacing:-.02em;
@@ -167,7 +169,10 @@
 <main id="top">
   <div class="wrap">
     <section class="hero">
-      <span class="eyebrow"><span class="dot"></span>本地训练 · 无需命令行</span>
+      <div class="eyebrows">
+        <span class="eyebrow"><span class="dot"></span>本地训练 · 无需命令行</span>
+        <span class="eyebrow"><span class="dot cloud"></span>云端训练 · 无需自己租服务器</span>
+      </div>
       <h1>从参考图到可用的 LoRA，<br><em>只差几个按钮</em></h1>
       <p class="lede">素材预处理、WD14 自动打标、参数自动适配、训练与多档对比出图，全在一个桌面窗口里完成。</p>
 
@@ -230,6 +235,11 @@
           <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 4v10"/><path d="M8 10.5l4 4 4-4"/><path d="M5 19.5h14"/></svg></div>
           <h3>增量更新</h3>
           <p>新版本只下载真正变化的文件，几秒完成；任务记录、配置、模型和产出都不会被覆盖。</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M7.5 18.5h9a4 4 0 0 0 .6-7.96A5.6 5.6 0 0 0 6.9 9.4 4.6 4.6 0 0 0 7.5 18.5z"/><path d="M12 16v-4.5"/><path d="M9.8 13.4L12 11.2l2.2 2.2"/></svg></div>
+          <h3>云端训练，不用自己租服务器</h3>
+          <p>本机显卡忙不过来时，把任务转到云端 GPU 接着训：参数和数据保持不变，按积分计费，不用自己配环境或租服务器。</p>
         </div>
       </div>
     </div>
