@@ -18,6 +18,7 @@
 |---|---|---|
 | `E:\一键lora\review_fix_v25\stage` | 开发工作区（当前版本源码） | 否 |
 | `E:\一键lora\release_repo` | 发布工程：构建脚本 + 版本号 + 历史清单 | 是（推送到公开仓） |
+| `E:\一键lora\release_repo\docs` | README 配图、下载页（GitHub Pages 从 `main /docs` 发布）、发布手册 | 是 |
 | `E:\一键lora\output\release\<版本>` | 每次构建出的 4 个发布产物 | 否（上传到 Release） |
 | `E:\一键lora\output\*.zip` | 完整安装包归档 | 否 |
 
@@ -136,7 +137,7 @@ latest.json                          更新指针
 
 ```powershell
 cd E:\一键lora\release_repo
-git add updates README.md packaging
+git add -A
 git commit -m "release: v1.0.0 基线"
 git push -u origin main
 ```
@@ -157,6 +158,17 @@ https://github.com/kongqijun/one-click-lora-trainer/releases/latest/download/lat
 - 点"检查更新"，应提示"已是最新版本"。
 
 > 老用户（v26 及以前）没有 `app/version.json`，客户端会提示"无法识别当前版本，请下载完整包"。他们把 1.0.0 完整包解压覆盖一次即可，用户数据（任务记录、配置、模型）不会被覆盖。
+
+### 3.4 开启下载页（一次性，需要点一下）
+
+下载页在 `docs/index.html`，GitHub Pages 从 `main /docs` 发布。本机 `api.github.com` 返回 403，没法用 API 自动开，需要手工设置一次：
+
+1. 打开 `https://github.com/kongqijun/one-click-lora-trainer/settings/pages`。
+2. **Source** 选 **Deploy from a branch**。
+3. **Branch** 选 `main`，目录选 **`/docs`**，点 **Save**。
+4. 等 1~2 分钟，访问 `https://kongqijun.github.io/one-click-lora-trainer/`。
+
+页面里的"下载最新版"按钮会读取 `docs/latest.json`，自动显示当前版本号和下载地址。构建脚本每次发版都会同时写 `updates/latest.json` 和 `docs/latest.json`，两者不需要手工同步。
 
 ---
 
@@ -210,10 +222,12 @@ release/1.0.1/
 ### 第 4 步：提交新清单
 
 ```powershell
-git add updates packaging/release.json
+git add -A
 git commit -m "release: v1.0.1"
 git push
 ```
+
+`docs/latest.json` 会由构建脚本一起更新，`git add -A` 会把它带上去，下载页的版本号随即变化。
 
 ### 第 5 步：验证（必做）
 
@@ -310,6 +324,7 @@ git push
 - [ ] 4 个资产都在（full / pack / manifest / latest.json）
 - [ ] `latest.json` 里的下载链接点开能下（浏览器直接试）
 - [ ] `updates/manifests/<version>.json` 已提交并推送
+- [ ] `docs/latest.json` 已随构建更新并推送（下载页的版本号与下载地址）
 - [ ] 用上一版安装实测一次"检查 → 更新 → 重启 → 版本变化"
 
 ---

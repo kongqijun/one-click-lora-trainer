@@ -238,6 +238,9 @@ def build(base: dict, stage: dict, version: str, cfg: dict, notes: str,
 
     write_json(MANIFESTS / ("%s.json" % version), manifest_obj)
     write_json(UPDATES / "latest.json", latest)
+    docs_dir = REPO / "docs"
+    if docs_dir.is_dir():
+        write_json(docs_dir / "latest.json", latest)
     return {"version": version, "tree": len(tree), "changed": len(changed),
             "full": str(full_path), "pack": str(pack_path) if pack_path else None,
             "pack_bytes": pack_info["size"] if pack_info else 0,
