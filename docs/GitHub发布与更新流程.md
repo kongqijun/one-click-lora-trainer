@@ -8,7 +8,7 @@
 
 - 每次发版，客户端**不下载完整包**，只下载"从你当前版本到最新版本"之间**真正变过的文件**，打包成一个几 MB 的增量包（pack）。
 - 判断哪些文件变了，靠的是包内每个文件的 SHA256 清单（manifest）。清单由构建脚本生成，不需要手工维护。
-- 客户端只从 GitHub 的 **Release 下载地址**取文件，**不调用 GitHub API**（本机 `api.github.com` 会返回 403，走 API 的方案在你这台机器上直接废掉）。
+- 客户端只从 GitHub 的 **Release 下载地址**取文件，**不调用 GitHub API**。未登录的 API 调用每个 IP 每小时只有 60 次，用户一多就会被限流返回 403；Release 下载地址没有这个限制。
 - 完整包仍然发布，但只在两种情况下用到：首次安装、跨版本太远（增量链断了）、或者这次改动涉及 `python/` 和 `一键Lora.exe`（运行中被占用，不能热替换）。
 - `security.py` 里的完整性清单每次发版都会重新密封，并随增量包一起下发；否则客户端更新完会被自己的完整性校验拦住。
 
@@ -159,9 +159,9 @@ https://github.com/kongqijun/one-click-lora-trainer/releases/latest/download/lat
 
 > 老用户（v26 及以前）没有 `app/version.json`，客户端会提示"无法识别当前版本，请下载完整包"。他们把 1.0.0 完整包解压覆盖一次即可，用户数据（任务记录、配置、模型）不会被覆盖。
 
-### 3.4 开启下载页（一次性，需要点一下）
+### 3.4 开启下载页（一次性，已完成）
 
-下载页在 `docs/index.html`，GitHub Pages 从 `main /docs` 发布。本机 `api.github.com` 返回 403，没法用 API 自动开，需要手工设置一次：
+下载页在 `docs/index.html`，GitHub Pages 从 `main /docs` 发布，线上地址 `https://kongqijun.github.io/one-click-lora-trainer/`。首次开启的设置方法：
 
 1. 打开 `https://github.com/kongqijun/one-click-lora-trainer/settings/pages`。
 2. **Source** 选 **Deploy from a branch**。
