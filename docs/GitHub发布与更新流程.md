@@ -125,6 +125,29 @@ latest.json                          更新指针
 
 ### 3.1 上传 Release
 
+**推荐：用 gh 命令行一步完成**（本机已装 `E:\Tools\gh_2.103.3\bin\gh.exe`，并已登录 `kongqijun`）：
+
+```powershell
+gh release create v1.0.0 --repo kongqijun/one-click-lora-trainer `
+  --title v1.0.0 --notes "这次更新了什么" --latest `
+  E:\一键lora\output\release\1.0.0\*
+```
+
+- 标签不存在时会在 `main` 的最新提交上自动创建；
+- `--latest` 确保它成为 Latest release（客户端只认 Latest）；
+- 传错了文件可以用 `gh release upload v1.0.0 <文件> --clobber` 覆盖，或 `gh release delete-asset v1.0.0 <文件名>` 删掉；
+- 换电脑或凭据失效时，先执行一次 `gh auth login --web` 再 `gh auth setup-git`。
+
+确认：
+
+```powershell
+gh release view --repo kongqijun/one-click-lora-trainer
+```
+
+应显示标签 `v1.0.0`，资产列表里有全部文件，且不是 draft / pre-release。
+
+**备用：网页手工上传**
+
 1. 浏览器打开 `https://github.com/kongqijun/one-click-lora-trainer/releases/new`。
 2. **Choose a tag** 输入 `v1.0.0` → 点 "Create new tag: v1.0.0 on publish"。
 3. Release title 填 `v1.0.0`。
@@ -217,7 +240,15 @@ release/1.0.1/
 
 ### 第 3 步：上传 Release
 
-同 3.1，标签改成 `v1.0.1`，把 4 个文件全部拖上去，确保是 Latest release。
+同 3.1，标签改成 `v1.0.1`：
+
+```powershell
+gh release create v1.0.1 --repo kongqijun/one-click-lora-trainer `
+  --title v1.0.1 --notes "这次更新了什么" --latest `
+  E:\一键lora\output\release\1.0.1\*
+```
+
+4 个文件（full / pack / manifest / latest.json）都要传，确保是 Latest release。
 
 ### 第 4 步：提交新清单
 
@@ -340,7 +371,9 @@ git push
 | 更新后版本号没变 | 更新只下载未应用（需重启） | 关闭程序重新打开；检查 `app/update/journal.json` 是否存在 |
 | jsDelivr 返回旧版本 | CDN 缓存 | 主源是 Release 资产，不应走到这里；确认 Release 是 Latest |
 | `git push` 报 403 | 用了密码而不是凭据 | 删除 Windows 凭据里的 github 条目，重新 push 走浏览器登录；或改用 PAT |
-| 上传 100MB 包中断 | 浏览器上传不稳定 | 重试；GitHub 单文件上限 2GB，不是大小问题 |
+| 上传 100MB 包中断 | 浏览器上传不稳定 | 改用 `gh release upload <标签> <文件> --clobber` 重传；GitHub 单文件上限 2GB，不是大小问题 |
+| `gh` 提示未登录 / 401 | 凭据过期或换了电脑 | `gh auth login --web`，然后 `gh auth setup-git` |
+| 新终端里找不到 `gh` | PATH 只对新开的终端生效 | 重开终端；或直接用 `E:\Tools\gh_2.103.3\bin\gh.exe` |
 
 ---
 
