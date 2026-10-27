@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "version": "1.0.0",
+  "tag": "v1.0.0",
+  "released": "2026-10-27",
+  "channel": "stable",
+  "notes": "首个版本：新增 GitHub 增量更新功能",
+  "full_only": true,
+  "full": {
+    "url": "https://github.com/kongqijun/one-click-lora-trainer/releases/download/v1.0.0/YijianLoRA-full-v1.0.0.zip",
+    "sha256": "0617df075bc9261780953c6d31e62b6702dd62f1e1f69a91be6beceeb0a4d304",
+    "size": 112208090
+  },
+  "manifest": {
+    "url": "https://github.com/kongqijun/one-click-lora-trainer/releases/download/v1.0.0/YijianLoRA-manifest-v1.0.0.json",
+    "sha256": "1802e0ce71bf762f718ccf50df18df482280336d940f7d2a3c1971bed77ef02f",
+    "size": 363283
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "pack": null
+    }
+  ]
+}

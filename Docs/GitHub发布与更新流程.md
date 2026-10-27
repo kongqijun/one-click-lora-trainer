@@ -27,28 +27,27 @@
 
 ## 1. 一次性准备：创建公开的"发布仓库"
 
-1. 登录 GitHub，右上角 **+ → New repository**。
-2. 仓库名填 `yijian-lora-releases`，可见性选 **Public**（必须是公开，否则用户下载要登录）。
-3. **不要**勾选 "Add a README file"（本地会建）。
-4. 创建后记下仓库全名，格式 `你的用户名/yijian-lora-releases`，后面所有地方都用它。
+仓库已经建好：**https://github.com/kongqijun/one-click-lora-trainer**（公开仓，匿名访问返回 200，已确认）。
+
+后面所有地方都用仓库全名 `kongqijun/one-click-lora-trainer`。
 
 ### 1.1 本地初始化并关联
 
 ```powershell
 cd E:\一键lora\release_repo
 git init -b main
-git remote add origin https://github.com/<你的用户名>/yijian-lora-releases.git
+git remote add origin https://github.com/kongqijun/one-click-lora-trainer.git
 ```
 
 首次 `push` 会弹出浏览器让你登录 GitHub。登录一次后 Windows 凭据管理器会记住。
 
-### 1.2 填仓库名
+### 1.2 仓库名（已填好，无需再改）
 
-打开 [release.json](E:/一键lora/release_repo/packaging/release.json)，把 `repo` 改成 `你的用户名/yijian-lora-releases`：
+[release.json](E:/一键lora/release_repo/packaging/release.json) 已经指向最终仓库，内容如下：
 
 ```json
 {
-  "repo": "你的用户名/yijian-lora-releases",
+  "repo": "kongqijun/one-click-lora-trainer",
   "channel": "stable",
   "version": "1.0.0"
 }
@@ -125,7 +124,7 @@ latest.json                          更新指针
 
 ### 3.1 上传 Release
 
-1. 浏览器打开 `https://github.com/<用户名>/yijian-lora-releases/releases/new`。
+1. 浏览器打开 `https://github.com/kongqijun/one-click-lora-trainer/releases/new`。
 2. **Choose a tag** 输入 `v1.0.0` → 点 "Create new tag: v1.0.0 on publish"。
 3. Release title 填 `v1.0.0`。
 4. 把 `E:\一键lora\output\release\1.0.0\` 里的 **3 个文件**（full、manifest、latest.json）拖进 "Attach binaries"。
@@ -144,10 +143,10 @@ git push -u origin main
 
 ### 3.3 验证
 
-浏览器直接打开（把用户名换成你的）：
+浏览器直接打开：
 
 ```
-https://github.com/<用户名>/yijian-lora-releases/releases/latest/download/latest.json
+https://github.com/kongqijun/one-click-lora-trainer/releases/latest/download/latest.json
 ```
 
 能看到 JSON、`version` 是 `1.0.0`，就算通了。**这一步不通，后面所有更新都不会通。**
@@ -226,6 +225,13 @@ git push
 ---
 
 ## 5. 更新协议（客户端到底请求了什么）
+
+### 5.0 客户端入口
+
+- 启动 2.5 秒后**静默检查**一次：有新版本时顶栏出现「发现新版本 v1.0.1」按钮；没有就什么都不显示。
+- 头像菜单 →「检查更新（v当前版本）」：强制重新检查并弹对话框。
+- 发现新版本 → 下载并校验到暂存区 → 提示「重启后生效」→ 立即重启或稍后手动重启。
+- 应用发生在**下一次启动的最开始**（导入其它模块之前），中途失败会自动回滚到旧版本。
 
 ### 5.1 检查更新
 

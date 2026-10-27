@@ -7,7 +7,7 @@
 - 每个版本的完整文件清单：`updates/manifests/<版本>.json`
 
 客户端（一键LoRA 训练器）通过
-`https://github.com/<owner>/<repo>/releases/latest/download/latest.json`
+`https://github.com/kongqijun/one-click-lora-trainer/releases/latest/download/latest.json`
 检查更新，不调用 GitHub API。
 
 发布流程见 [Docs/GitHub发布与更新流程.md](Docs/GitHub发布与更新流程.md)。
