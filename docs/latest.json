@@ -1,25 +1,34 @@
 {
   "schema": 1,
-  "version": "1.0.0",
-  "tag": "v1.0.0",
-  "released": "2026-10-27",
+  "version": "1.0.1",
+  "tag": "v1.0.1",
+  "released": "2026-10-28",
   "channel": "stable",
-  "notes": "首个版本：新增 GitHub 增量更新功能",
-  "full_only": true,
+  "notes": "新增 Qwen-Image 与 Z-Image 训练支持；扫描到多类新底模时可勾选补齐训练依赖；未扫到底模时可选择下载；推荐配置按显存档适配并修正 Pony / 小显存档问题",
+  "full_only": false,
   "full": {
-    "url": "https://github.com/kongqijun/one-click-lora-trainer/releases/download/v1.0.0/YijianLoRA-full-v1.0.0.zip",
-    "sha256": "0617df075bc9261780953c6d31e62b6702dd62f1e1f69a91be6beceeb0a4d304",
-    "size": 112208090
+    "url": "https://github.com/kongqijun/one-click-lora-trainer/releases/download/v1.0.1/YijianLoRA-full-v1.0.1.zip",
+    "sha256": "0b7800c4b8c85d03ee599320f75c3852ac370acd1cc03c98ad6a98df91a13fdf",
+    "size": 118299358
   },
   "manifest": {
-    "url": "https://github.com/kongqijun/one-click-lora-trainer/releases/download/v1.0.0/YijianLoRA-manifest-v1.0.0.json",
-    "sha256": "1802e0ce71bf762f718ccf50df18df482280336d940f7d2a3c1971bed77ef02f",
-    "size": 363283
+    "url": "https://github.com/kongqijun/one-click-lora-trainer/releases/download/v1.0.1/YijianLoRA-manifest-v1.0.1.json",
+    "sha256": "7080d3139b7ffaf84d0e872b31c3abb2364b67c6aa99e03ec8564f276f1f2893",
+    "size": 398781
   },
   "history": [
     {
       "version": "1.0.0",
       "pack": null
+    },
+    {
+      "version": "1.0.1",
+      "from": "1.0.0",
+      "pack": {
+        "url": "https://github.com/kongqijun/one-click-lora-trainer/releases/download/v1.0.1/YijianLoRA-pack-v1.0.1.zip",
+        "sha256": "4c6be7753ee9a5b34ecb38a0af9424a8aad1a97c8b16ae30947bbc66fc93b48e",
+        "size": 7319348
+      }
     }
   ]
 }
