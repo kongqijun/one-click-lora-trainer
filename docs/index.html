@@ -108,7 +108,8 @@
   .card h3{margin:0 0 6px; font-size:17px}
   .card p{margin:0; color:var(--muted); font-size:14.5px}
 
-  .gallery{display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .gallery{display:grid; gap:22px; grid-template-columns:repeat(2,minmax(0,1fr))}
+  @media (max-width:640px){ .gallery{grid-template-columns:1fr} }
   figure{margin:0}
   figcaption{margin-top:10px; color:var(--muted); font-size:13.5px}
   figcaption b{color:var(--text); font-weight:600}
@@ -248,21 +249,25 @@
   <section id="shots">
     <div class="wrap">
       <div class="sec-head">
-        <h2>界面就是这个样子</h2>
-        <p>一个任务对应一套图集、一份标注、一次训练，随时可以回来接着做。</p>
+        <h2>训练界面与工作流程</h2>
+        <p>每个任务独立管理图集、标注和训练参数，支持随时中断与继续。</p>
       </div>
       <div class="gallery">
         <figure>
+          <div class="shot"><img src="assets/prepare.png" alt="准备数据界面：选择图集、预处理尺寸与素材预览" loading="lazy"></div>
+          <figcaption><b>① 准备数据</b> — 选择图集并设置预处理尺寸，预览确认后生成训练数据集。</figcaption>
+        </figure>
+        <figure>
           <div class="shot"><img src="assets/tagging.png" alt="WD14 自动打标界面" loading="lazy"></div>
-          <figcaption><b>② 编辑标注</b> — WD14 整批打标，批量删掉不需要的特征，再逐张确认。</figcaption>
+          <figcaption><b>② 编辑标注</b> — 使用 WD14 批量生成标注，支持批量编辑与逐张校对。</figcaption>
         </figure>
         <figure>
           <div class="shot"><img src="assets/train.png" alt="训练设置界面：底模、LoRA 类型与训练参数" loading="lazy"></div>
-          <figcaption><b>③ 训练</b> — 选底模、选类型，参数自动匹配显卡；也能手动改每一步。</figcaption>
+          <figcaption><b>③ 配置训练</b> — 选择底模与 LoRA 类型，自动匹配训练参数，也可手动调整。</figcaption>
         </figure>
         <figure>
           <div class="shot"><img src="assets/run.png" alt="开始训练与训练产物界面" loading="lazy"></div>
-          <figcaption><b>开始训练</b> — 快速验证 / 正式训练 / 暂停 / 停止并保存，产物直接落到 LoRA 目录。</figcaption>
+          <figcaption><b>④ 执行训练</b> — 支持快速验证、正式训练、暂停与断点续训，产物保存至 LoRA 目录。</figcaption>
         </figure>
       </div>
     </div>
@@ -317,11 +322,11 @@
             <span class="tag">Illustrious</span>
             <span class="tag">Pony</span>
             <span class="tag">NoobAI v-pred</span>
-            <span class="tag">SD 1.5</span>
-            <span class="tag">SD 2.x</span>
             <span class="tag">Anima</span>
+            <span class="tag">Qwen-Image</span>
+            <span class="tag">Z-Image</span>
           </div>
-          <p class="muted" style="margin:16px 0 0; font-size:14px">Flux 与 SD3 当前训练链路暂不支持，界面内参数仅作参照。</p>
+          <p class="muted" style="margin:16px 0 0; font-size:14px">Qwen-Image 与 Z-Image 需使用 BF16 原版底模，量化版不可训练。SD 1.5、SD 2.x、Flux 与 SD3 当前训练链路暂不支持，界面内参数仅作参照。</p>
         </div>
       </div>
     </div>
@@ -336,7 +341,7 @@
       <details><summary>8 GB 显存能训练吗？</summary><p>可以跑 SDXL 系的低显存档（768 分辨率桶、dim 16），速度会慢一些；SD 1.5 更宽松。程序会按显卡自动选择对应档位。</p></details>
       <details><summary>会改动我原来的 ComfyUI 吗？</summary><p>不会。程序只读取 ComfyUI 使用的 Python，复制或另建一个独立训练环境，不修改原目录。</p></details>
       <details><summary>更新会丢任务或模型吗？</summary><p>不会。更新只替换程序文件，任务记录、配置、训练环境、模型和产出都不在更新范围内。</p></details>
-      <details><summary>支持 Flux 或 SD3 吗？</summary><p>当前训练链路还不支持，这两类底模不会出现在可选训练方案里。</p></details>
+      <details><summary>支持 Flux、SD3、SD 1.5 或 SD 2.x 吗？</summary><p>当前训练链路暂不支持这些架构，它们不会出现在可选训练方案中；界面内的相关参数仅供参照。</p></details>
       <details><summary>下载很慢怎么办？</summary><p>安装包托管在 GitHub Releases，直连速度不稳定。可以换个时段重试，或使用加速工具；完整包约 107 MB，之后的小版本只需增量更新。</p></details>
       <details><summary>Windows 提示未知发布者？</summary><p>程序没有购买代码签名证书，SmartScreen 可能拦截。确认来源后点「更多信息 → 仍要运行」即可。</p></details>
     </div>
