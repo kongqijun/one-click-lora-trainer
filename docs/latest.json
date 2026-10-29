@@ -1,19 +1,19 @@
 {
   "schema": 1,
-  "version": "1.0.2",
-  "tag": "v1.0.2",
-  "released": "2026-10-28",
+  "version": "1.0.3",
+  "tag": "v1.0.3",
+  "released": "2026-10-29",
   "channel": "stable",
-  "notes": "更新后自动重启时不再弹出空白的黑色命令行窗口",
+  "notes": "修复训练中途偶发「拒绝访问（WinError 5）」导致训练中断的问题",
   "full_only": false,
   "full": {
-    "url": "https://github.com/kongqijun/one-click-lora-trainer/releases/download/v1.0.2/YijianLoRA-full-v1.0.2.zip",
-    "sha256": "d1d9d798e9686a140b2cfad17ba99816d22244a8dc159f932ee926af5d854902",
-    "size": 118298784
+    "url": "https://github.com/kongqijun/one-click-lora-trainer/releases/download/v1.0.3/YijianLoRA-full-v1.0.3.zip",
+    "sha256": "bf42dec446ee302430fbfe81d216b1cec0e32ad3463f20d60dc39fbb96d4e9c3",
+    "size": 118299253
   },
   "manifest": {
-    "url": "https://github.com/kongqijun/one-click-lora-trainer/releases/download/v1.0.2/YijianLoRA-manifest-v1.0.2.json",
-    "sha256": "a694b181643a4cbc7443983a6400e2eefa593ee4002dd1fc1500c83d7d3df3a9",
+    "url": "https://github.com/kongqijun/one-click-lora-trainer/releases/download/v1.0.3/YijianLoRA-manifest-v1.0.3.json",
+    "sha256": "ea3f0595a681319d509a46dde0a2962b682e8c2c00986c219dc03e2bcd8a3e7d",
     "size": 398781
   },
   "history": [
@@ -37,6 +37,15 @@
         "url": "https://github.com/kongqijun/one-click-lora-trainer/releases/download/v1.0.2/YijianLoRA-pack-v1.0.2.zip",
         "sha256": "4f1f3fd4c6b55c66a7fb9fd9bd6cddb8774ba8f452cf722d5d86a71d730caf37",
         "size": 332460
+      }
+    },
+    {
+      "version": "1.0.3",
+      "from": "1.0.2",
+      "pack": {
+        "url": "https://github.com/kongqijun/one-click-lora-trainer/releases/download/v1.0.3/YijianLoRA-pack-v1.0.3.zip",
+        "sha256": "a87e09e7a5374ff4389ae86e853471397647c06f2d901970e741aa3f1c23a117",
+        "size": 353630
       }
     }
   ]
